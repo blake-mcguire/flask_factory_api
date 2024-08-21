@@ -6,6 +6,12 @@ from models.order import Order
 from database import db
 from utils.util import encode_token
 
+
+
+def mask_password(password):
+    return '*' * len(password)
+
+
 def login(username, password):
     query = select(CustomerAccount).where(CustomerAccount.username == username)
     customer = db.session.execute(query).scalar_one_or_none()
@@ -17,7 +23,7 @@ def login(username, password):
             "message": "Successfully Logged in",
             "auth_token": auth_token
         }
-    return None  # Return None if login fails
+    return None  
 
 def create_account(account_data):
     customer_id = account_data.get('customer_id')
@@ -132,7 +138,7 @@ def update_customer_account(account_id, data):
         account.username = data['username']
 
     if 'password' in data:
-        account.password = data['password']  # Consider hashing the password here if necessary
+        account.password = data['password'] 
 
     if 'role_id' in data:
         account.role_id = data['role_id']
