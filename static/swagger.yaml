@@ -31,7 +31,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/customerAccount'
+              $ref: '#/models/schemas/customerAccount'
       responses:
         '201':
           description: Account successfully created
@@ -70,7 +70,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/customerAccount'
+              $ref: '#/models/schemas/customerAccount'
       responses:
         '200':
           description: Customer account updated
@@ -98,7 +98,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/customerSchema'
+              $ref: '#/models/schemas/customerSchema'
       responses:
         '201':
           description: Customer successfully created
@@ -137,7 +137,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/customerSchema'
+              $ref: '#/models/schemas/customerSchema'
       responses:
         '200':
           description: Customer updated
@@ -165,7 +165,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/orderSchema'
+              $ref: '#/models/schemas/orderSchema'
       responses:
         '200':
           description: Order placed successfully
@@ -195,7 +195,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/models/schemas/productSchema'
       responses:
         '201':
           description: Product successfully created
@@ -234,7 +234,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/productSchemas'
+              $ref: '#/models/schemas/productSchemas'
       responses:
         '200':
           description: Product updated
