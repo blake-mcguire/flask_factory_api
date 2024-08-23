@@ -7,8 +7,9 @@ from routes.customerAccountsBP import account_blueprint
 from routes.customerBP import customer_blueprint
 from routes.productsBP import product_blueprint
 from routes.ordersBP import order_blueprint
-from config import DevelopmentConfig
+from config import DevelopmentConfig, ProductionConfig
 from flask_swagger_ui import get_swaggerui_blueprint
+from flask_cors import CORS
 
 
 SWAGGER_URL = '/api/docs'  
@@ -29,7 +30,8 @@ def create_app(config_class):
     ma.init_app(app)
     cache.init_app(app)
     limiter.init_app(app)
-
+    CORS(app)
+    
     app.register_blueprint(swagger_blueprint, url_prefix=SWAGGER_URL)
     app.register_blueprint(order_blueprint, url_prefix='/orders')
     app.register_blueprint(product_blueprint, url_prefix='/products')
@@ -40,7 +42,7 @@ def create_app(config_class):
     return app
 
 if __name__ == '__main__':
-    app = create_app(DevelopmentConfig)  
+    app = create_app(ProductionConfig)  
 
     with app.app_context():
         db.create_all()
