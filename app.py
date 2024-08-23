@@ -41,12 +41,10 @@ def create_app(config_class):
     print('Running')
     return app
 
-if __name__ == '__main__':
-    app = create_app(ProductionConfig)  
 
-    with app.app_context():
-        db.create_all()
+app = create_app(ProductionConfig)  
+
+with app.app_context():
+    db.create_all()
     
-    for rule in app.url_map.iter_rules():
-        print(rule)
-    app.run()
+    
